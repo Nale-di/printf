@@ -3,14 +3,46 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-/**
- * _printf - this is a printf function
- * @format: the string
- *
- * Return: the number of characters printed
- */
 
-int print_format (char letter, va_list, ap)
+/**
+* print_char - this prints character
+*@c: placeholder for character
+* Return: the character
+*/
+
+int print_char(int c)
+{
+return (write(1, &c, 1));
+}
+
+/**
+* print_str - this prints the string
+*@str: placeholder for string
+* Return: the string
+*/
+
+int print_str(char *str)
+{
+int count;
+count = 0;
+while (*str != '\0')
+{
+print_char((int)*str);
+++count;
+++str;
+}
+return (count);
+}
+
+/**
+* print_format - this is a format function
+* @ap: argument pointer
+* @va_list: list of arguments
+* @letter: placeholders
+* Return: the number of characters printed
+*/
+
+int print_format(char letter, va_list, ap)
 {
 int count;
 count = 0;
@@ -18,12 +50,16 @@ if (letter == 'c')
 count += print_char(va_arg(ap, int))
 else if (letter == 's')
 count += print_str(va_arg(ap, char *))
-else 
+else
 count += write(1, &letter, 1);
-return count;
+return (count);
 }
 
-
+/**
+* _printf - this is a printf function
+*@format: the string
+* Return: the number of characters printed
+*/
 int _printf(const char *format, ...)
 {
 va_list ap;
