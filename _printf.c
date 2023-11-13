@@ -11,4 +11,14 @@
  */
 
 int _printf(const char *format, ...)
+{	
+
+va_list ap;
+int count;
+
+va_start(ap; format);
+count =0;
+
+}
+
 
