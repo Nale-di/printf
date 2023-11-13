@@ -10,6 +10,20 @@
  * Return: the number of characters printed
  */
 
+int print_format (char letter, va_list, ap)
+{
+int count;
+count = 0;
+if (letter == 'c')
+count += print_char(va_arg(ap, int))
+else if (letter == 's')
+count += print_str(va_arg(ap, char *))
+else 
+count += write(1, &letter, 1);
+return count;
+}
+
+
 int _printf(const char *format, ...)
 {
 va_list ap;
