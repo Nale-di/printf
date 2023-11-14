@@ -65,13 +65,13 @@ int _printf(const char *format, ...)
 va_list args;
 int count;
 char next_char;
- va_start(args, format);
+va_start(args, format);
 count = 0;
 for (count = 0; format[count] != '\0'; count++)
 {
 if (format[count] == '%')
 {
-format++;
+format++; 
 next_char = format[0];
 print_format(next_char, args);
 }
